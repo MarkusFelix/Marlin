@@ -21,8 +21,6 @@
  */
 #pragma once
 
-#define CONFIG_EXAMPLES_DIR "Creality/Ender-5 Pro/CrealityV422"
-
 /**
  * Configuration.h
  *
@@ -72,7 +70,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(Dust, Ender-5 Pro)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(Markus Felix, MPSM v2)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -90,10 +88,10 @@
 #define SHOW_BOOTSCREEN
 
 // Show the bitmap in Marlin/_Bootscreen.h on startup.
-#define SHOW_CUSTOM_BOOTSCREEN
+//#define SHOW_CUSTOM_BOOTSCREEN
 
 // Show the bitmap in Marlin/_Statusscreen.h on the status screen.
-#define CUSTOM_STATUS_SCREEN_IMAGE
+//#define CUSTOM_STATUS_SCREEN_IMAGE
 
 // @section machine
 
@@ -134,7 +132,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Ender-5 Pro 4.2.2"
+#define CUSTOM_MACHINE_NAME "MPSM v2 4.2.2"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -408,7 +406,7 @@
  *   998 : Dummy Table that ALWAYS reads 25°C or the temperature defined below.
  *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  */
-#define TEMP_SENSOR_0 1
+#define TEMP_SENSOR_0 11
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -416,7 +414,7 @@
 #define TEMP_SENSOR_5 0
 #define TEMP_SENSOR_6 0
 #define TEMP_SENSOR_7 0
-#define TEMP_SENSOR_BED 1
+#define TEMP_SENSOR_BED 11
 #define TEMP_SENSOR_PROBE 0
 #define TEMP_SENSOR_CHAMBER 0
 
@@ -458,7 +456,7 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-#define HEATER_0_MAXTEMP 275
+#define HEATER_0_MAXTEMP 255
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
@@ -466,7 +464,7 @@
 #define HEATER_5_MAXTEMP 275
 #define HEATER_6_MAXTEMP 275
 #define HEATER_7_MAXTEMP 275
-#define BED_MAXTEMP      125
+#define BED_MAXTEMP      100
 
 //===========================================================================
 //============================= PID Settings ================================
@@ -614,11 +612,11 @@
 // Specify here all the endstop connectors that are connected to any endstop or probe.
 // Almost all printers will be using one per axis. Probes will use one or more of the
 // extra connectors. Leave undefined any used for non-endstop and non-probe purposes.
-//#define USE_XMIN_PLUG
-//#define USE_YMIN_PLUG
+#define USE_XMIN_PLUG
+#define USE_YMIN_PLUG
 #define USE_ZMIN_PLUG
-#define USE_XMAX_PLUG
-#define USE_YMAX_PLUG
+//#define USE_XMAX_PLUG
+//#define USE_YMAX_PLUG
 //#define USE_ZMAX_PLUG
 
 // Enable pullup for all endstops to prevent a floating state
@@ -648,12 +646,12 @@
 #endif
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
-#define X_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Y_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Z_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define X_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Y_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Z_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define X_MIN_ENDSTOP_INVERTING true        // Set to true to invert the logic of the endstop.
+#define Y_MIN_ENDSTOP_INVERTING true        // Set to true to invert the logic of the endstop.
+#define Z_MIN_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
+#define X_MAX_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
+#define Y_MAX_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
+#define Z_MAX_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
 #define Z_MIN_PROBE_ENDSTOP_INVERTING false // Set to true to invert the logic of the probe.
 
 /**
@@ -737,14 +735,14 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 93 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, 140 }
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 500, 500, 5, 25 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 500, 50 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1111,15 +1109,15 @@
 
 // Direction of endstops when homing; 1=MAX, -1=MIN
 // :[-1,1]
-#define X_HOME_DIR 1
-#define Y_HOME_DIR 1
+#define X_HOME_DIR -1
+#define Y_HOME_DIR -1
 #define Z_HOME_DIR -1
 
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 220
-#define Y_BED_SIZE 220
+#define X_BED_SIZE 120
+#define Y_BED_SIZE 120
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1127,7 +1125,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 300
+#define Z_MAX_POS 160
 
 /**
  * Software Endstops
@@ -1523,11 +1521,11 @@
 
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 185
-#define PREHEAT_1_TEMP_BED     45
+#define PREHEAT_1_TEMP_HOTEND 190
+#define PREHEAT_1_TEMP_BED     55
 #define PREHEAT_1_FAN_SPEED   255 // Value from 0 to 255
 
-#define PREHEAT_2_LABEL       "ABS"
+#define PREHEAT_2_LABEL       "PETG"
 #define PREHEAT_2_TEMP_HOTEND 240
 #define PREHEAT_2_TEMP_BED     70
 #define PREHEAT_2_FAN_SPEED   255 // Value from 0 to 255
