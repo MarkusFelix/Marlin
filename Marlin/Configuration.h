@@ -506,6 +506,7 @@
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
 <<<<<<< HEAD
+<<<<<<< HEAD
     #define DEFAULT_Kp 22.43
     #define DEFAULT_Ki 1.58
     #define DEFAULT_Kd 79.56
@@ -516,6 +517,16 @@
     #define DEFAULT_Kd 114.00
   #endif
 >>>>>>> [MOD] endsto inverting, direction inverting
+=======
+//    #define DEFAULT_Kp  22.20
+//    #define DEFAULT_Ki   1.08
+//    #define DEFAULT_Kd 114.00
+
+  #define DEFAULT_Kp 8.38
+  #define DEFAULT_Ki 0.43
+  #define DEFAULT_Kd 40.70
+#endif
+>>>>>>> [REL] working version tested on hardware
 #endif // PIDTEMP
 
 //===========================================================================
@@ -553,9 +564,9 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 10.00
-  #define DEFAULT_bedKi .023
-  #define DEFAULT_bedKd 305.4
+  //#define DEFAULT_bedKp 10.00
+  //#define DEFAULT_bedKi .023
+  //#define DEFAULT_bedKd 305.4
 
   // Monoprice Select Mega 24V Ultrabase tuned @ 75°C - Ultrabase gives about 10°C Delta
   #define DEFAULT_bedKp 71.59
@@ -1191,7 +1202,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 130
+#define Z_MAX_POS 125
 
 /**
  * Software Endstops
