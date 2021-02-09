@@ -214,14 +214,14 @@
  * Thermal Protection parameters for the bed are just as above for hotends.
  */
 #if ENABLED(THERMAL_PROTECTION_BED)
-  #define THERMAL_PROTECTION_BED_PERIOD        20 // Seconds
-  #define THERMAL_PROTECTION_BED_HYSTERESIS     2 // Degrees Celsius
+  #define THERMAL_PROTECTION_BED_PERIOD        60 // Seconds
+  #define THERMAL_PROTECTION_BED_HYSTERESIS     4 // Degrees Celsius
 
   /**
    * As described above, except for the bed (M140/M190/M303).
    */
-  #define WATCH_BED_TEMP_PERIOD                60 // Seconds
-  #define WATCH_BED_TEMP_INCREASE               2 // Degrees Celsius
+  #define WATCH_BED_TEMP_PERIOD                120 // Seconds
+  #define WATCH_BED_TEMP_INCREASE               4 // Degrees Celsius
 #endif
 
 /**
@@ -817,10 +817,14 @@
 
   #define RESTORE_LEVELING_AFTER_G35    // Enable to restore leveling setup after operation
   //#define REPORT_TRAMMING_MM          // Report Z deviation (mm) for each point relative to the first
+<<<<<<< HEAD
 
   //#define ASSISTED_TRAMMING_WIZARD    // Add a Tramming Wizard to the LCD menu
 
   //#define ASSISTED_TRAMMING_WAIT_POSITION { X_CENTER, Y_CENTER, 30 } // Move the nozzle out of the way for adjustment
+=======
+  //#define ASSISTED_TRAMMING_MENU_ITEM // Add a menu item for Assisted Tramming
+>>>>>>> c30ad644e9d6f9d35bfa04d8986eaf2070e8cb87
 
   /**
    * Screw thread:
@@ -850,10 +854,17 @@
  * Set DISABLE_INACTIVE_? 'true' to shut down axis steppers after an idle period.
  * The Deactive Time can be overridden with M18 and M84. Set to 0 for No Timeout.
  */
+<<<<<<< HEAD
 #define DEFAULT_STEPPER_DEACTIVE_TIME 0
 #define DISABLE_INACTIVE_X flase
 #define DISABLE_INACTIVE_Y flase
 #define DISABLE_INACTIVE_Z flase  // Set 'false' if the nozzle could fall onto your printed part!
+=======
+#define DEFAULT_STEPPER_DEACTIVE_TIME 120
+#define DISABLE_INACTIVE_X true
+#define DISABLE_INACTIVE_Y true
+#define DISABLE_INACTIVE_Z true  // Set 'false' if the nozzle could fall onto your printed part!
+>>>>>>> c30ad644e9d6f9d35bfa04d8986eaf2070e8cb87
 #define DISABLE_INACTIVE_E true
 
 // If the Nozzle or Bed falls when the Z stepper is disabled, set its resting position here.
@@ -1107,9 +1118,6 @@
 
   // BACK menu items keep the highlight at the top
   //#define TURBO_BACK_MENU_ITEM
-
-  // Add a mute option to the LCD menu
-  //#define SOUND_MENU_ITEM
 
   /**
    * LED Control Menu
@@ -1394,9 +1402,12 @@
    * :[ 'LCD', 'ONBOARD', 'CUSTOM_CABLE' ]
    */
   #define SDCARD_CONNECTION LCD
+<<<<<<< HEAD
 
   // Enable if SD detect is rendered useless (e.g., by using an SD extender)
   //#define NO_SD_DETECT
+=======
+>>>>>>> c30ad644e9d6f9d35bfa04d8986eaf2070e8cb87
 
 #endif // SDSUPPORT
 
@@ -1673,14 +1684,18 @@
 #if ENABLED(BABYSTEPPING)
   //#define INTEGRATED_BABYSTEPPING         // EXPERIMENTAL integration of babystepping into the Stepper ISR
   //#define BABYSTEP_WITHOUT_HOMING
-  //#define BABYSTEP_ALWAYS_AVAILABLE       // Allow babystepping at all times (not just during movement).
+  #define BABYSTEP_ALWAYS_AVAILABLE       // Allow babystepping at all times (not just during movement).
   //#define BABYSTEP_XY                     // Also enable X/Y Babystepping. Not supported on DELTA!
   #define BABYSTEP_INVERT_Z false           // Change if Z babysteps should go the other way
   //#define BABYSTEP_MILLIMETER_UNITS       // Specify BABYSTEP_MULTIPLICATOR_(XY|Z) in mm instead of micro-steps
   #define BABYSTEP_MULTIPLICATOR_Z  1       // (steps or mm) Steps or millimeter distance for each Z babystep
   #define BABYSTEP_MULTIPLICATOR_XY 1       // (steps or mm) Steps or millimeter distance for each XY babystep
 
+<<<<<<< HEAD
   //#define DOUBLECLICK_FOR_Z_BABYSTEPPING  // Double-click on the Status Screen for Z Babystepping.
+=======
+  #define DOUBLECLICK_FOR_Z_BABYSTEPPING  // Double-click on the Status Screen for Z Babystepping.
+>>>>>>> c30ad644e9d6f9d35bfa04d8986eaf2070e8cb87
   #if ENABLED(DOUBLECLICK_FOR_Z_BABYSTEPPING)
     #define DOUBLECLICK_MAX_INTERVAL 1250   // Maximum interval between clicks, in milliseconds.
                                             // Note: Extra time may be added to mitigate controller latency.
@@ -1690,7 +1705,7 @@
     #endif
   #endif
 
-  //#define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
+  #define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
 
   //#define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
   #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
@@ -2357,7 +2372,11 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
+<<<<<<< HEAD
     #define Y_CURRENT       400
+=======
+    #define Y_CURRENT       800
+>>>>>>> c30ad644e9d6f9d35bfa04d8986eaf2070e8cb87
     #define Y_CURRENT_HOME  Y_CURRENT
     #define Y_MICROSTEPS     16
     #define Y_RSENSE          0.11
@@ -2411,7 +2430,11 @@
   #endif
 
   #if AXIS_IS_TMC(E0)
+<<<<<<< HEAD
     #define E0_CURRENT      400
+=======
+    #define E0_CURRENT      450
+>>>>>>> c30ad644e9d6f9d35bfa04d8986eaf2070e8cb87
     #define E0_MICROSTEPS    16
     #define E0_RSENSE         0.11
     #define E0_CHAIN_POS     -1
@@ -2565,6 +2588,7 @@
    * Define your own with:
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
+<<<<<<< HEAD
   #define CHOPPER_TIMING CHOPPER_DEFAULT_12V        // All axes (override below)
   //#define CHOPPER_TIMING_X  CHOPPER_DEFAULT_12V   // For X Axes (override below)
   //#define CHOPPER_TIMING_X2 CHOPPER_DEFAULT_12V
@@ -2582,8 +2606,27 @@
   //#define CHOPPER_TIMING_E5 CHOPPER_DEFAULT_12V
   //#define CHOPPER_TIMING_E6 CHOPPER_DEFAULT_12V
   //#define CHOPPER_TIMING_E7 CHOPPER_DEFAULT_12V
+=======
+#define CHOPPER_TIMING CHOPPER_DEFAULT_24V // All axes (override below)
+//#define CHOPPER_TIMING_X  CHOPPER_DEFAULT_12V   // For X Axes (override below)
+//#define CHOPPER_TIMING_X2 CHOPPER_DEFAULT_12V
+//#define CHOPPER_TIMING_Y  CHOPPER_DEFAULT_12V   // For Y Axes (override below)
+//#define CHOPPER_TIMING_Y2 CHOPPER_DEFAULT_12V
+//#define CHOPPER_TIMING_Z  CHOPPER_DEFAULT_12V   // For Z Axes (override below)
+//#define CHOPPER_TIMING_Z2 CHOPPER_DEFAULT_12V
+//#define CHOPPER_TIMING_Z3 CHOPPER_DEFAULT_12V
+//#define CHOPPER_TIMING_Z4 CHOPPER_DEFAULT_12V
+//#define CHOPPER_TIMING_E  CHOPPER_DEFAULT_12V   // For Extruders (override below)
+//#define CHOPPER_TIMING_E1 CHOPPER_DEFAULT_12V
+//#define CHOPPER_TIMING_E2 CHOPPER_DEFAULT_12V
+//#define CHOPPER_TIMING_E3 CHOPPER_DEFAULT_12V
+//#define CHOPPER_TIMING_E4 CHOPPER_DEFAULT_12V
+//#define CHOPPER_TIMING_E5 CHOPPER_DEFAULT_12V
+//#define CHOPPER_TIMING_E6 CHOPPER_DEFAULT_12V
+//#define CHOPPER_TIMING_E7 CHOPPER_DEFAULT_12V
+>>>>>>> c30ad644e9d6f9d35bfa04d8986eaf2070e8cb87
 
-  /**
+/**
    * Monitor Trinamic drivers
    * for error conditions like overtemperature and short to ground.
    * To manage over-temp Marlin can decrease the driver current until the error condition clears.
@@ -2594,41 +2637,41 @@
    * M912 - Clear stepper driver overtemperature pre-warn condition flag.
    * M122 - Report driver parameters (Requires TMC_DEBUG)
    */
-  //#define MONITOR_DRIVER_STATUS
+//#define MONITOR_DRIVER_STATUS
 
-  #if ENABLED(MONITOR_DRIVER_STATUS)
-    #define CURRENT_STEP_DOWN     50  // [mA]
-    #define REPORT_CURRENT_CHANGE
-    #define STOP_ON_ERROR
-  #endif
+#if ENABLED(MONITOR_DRIVER_STATUS)
+#define CURRENT_STEP_DOWN 50 // [mA]
+#define REPORT_CURRENT_CHANGE
+#define STOP_ON_ERROR
+#endif
 
-  /**
+/**
    * TMC2130, TMC2160, TMC2208, TMC2209, TMC5130 and TMC5160 only
    * The driver will switch to spreadCycle when stepper speed is over HYBRID_THRESHOLD.
    * This mode allows for faster movements at the expense of higher noise levels.
    * STEALTHCHOP_(XY|Z|E) must be enabled to use HYBRID_THRESHOLD.
    * M913 X/Y/Z/E to live tune the setting
    */
-  //#define HYBRID_THRESHOLD
+//#define HYBRID_THRESHOLD
 
-  #define X_HYBRID_THRESHOLD     100  // [mm/s]
-  #define X2_HYBRID_THRESHOLD    100
-  #define Y_HYBRID_THRESHOLD     100
-  #define Y2_HYBRID_THRESHOLD    100
-  #define Z_HYBRID_THRESHOLD       3
-  #define Z2_HYBRID_THRESHOLD      3
-  #define Z3_HYBRID_THRESHOLD      3
-  #define Z4_HYBRID_THRESHOLD      3
-  #define E0_HYBRID_THRESHOLD     30
-  #define E1_HYBRID_THRESHOLD     30
-  #define E2_HYBRID_THRESHOLD     30
-  #define E3_HYBRID_THRESHOLD     30
-  #define E4_HYBRID_THRESHOLD     30
-  #define E5_HYBRID_THRESHOLD     30
-  #define E6_HYBRID_THRESHOLD     30
-  #define E7_HYBRID_THRESHOLD     30
+#define X_HYBRID_THRESHOLD 100 // [mm/s]
+#define X2_HYBRID_THRESHOLD 100
+#define Y_HYBRID_THRESHOLD 100
+#define Y2_HYBRID_THRESHOLD 100
+#define Z_HYBRID_THRESHOLD 3
+#define Z2_HYBRID_THRESHOLD 3
+#define Z3_HYBRID_THRESHOLD 3
+#define Z4_HYBRID_THRESHOLD 3
+#define E0_HYBRID_THRESHOLD 30
+#define E1_HYBRID_THRESHOLD 30
+#define E2_HYBRID_THRESHOLD 30
+#define E3_HYBRID_THRESHOLD 30
+#define E4_HYBRID_THRESHOLD 30
+#define E5_HYBRID_THRESHOLD 30
+#define E6_HYBRID_THRESHOLD 30
+#define E7_HYBRID_THRESHOLD 30
 
-  /**
+/**
    * Use StallGuard to home / probe X, Y, Z.
    *
    * TMC2130, TMC2160, TMC2209, TMC2660, TMC5130, and TMC5160 only
@@ -2653,23 +2696,23 @@
    *
    * Comment *_STALL_SENSITIVITY to disable sensorless homing for that axis.
    */
-  //#define SENSORLESS_HOMING // StallGuard capable drivers only
+//#define SENSORLESS_HOMING // StallGuard capable drivers only
 
-  #if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)
-    // TMC2209: 0...255. TMC2130: -64...63
-    #define X_STALL_SENSITIVITY  8
-    #define X2_STALL_SENSITIVITY X_STALL_SENSITIVITY
-    #define Y_STALL_SENSITIVITY  8
-    #define Y2_STALL_SENSITIVITY Y_STALL_SENSITIVITY
-    //#define Z_STALL_SENSITIVITY  8
-    //#define Z2_STALL_SENSITIVITY Z_STALL_SENSITIVITY
-    //#define Z3_STALL_SENSITIVITY Z_STALL_SENSITIVITY
-    //#define Z4_STALL_SENSITIVITY Z_STALL_SENSITIVITY
-    //#define SPI_ENDSTOPS              // TMC2130 only
-    //#define IMPROVE_HOMING_RELIABILITY
-  #endif
+#if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)
+// TMC2209: 0...255. TMC2130: -64...63
+#define X_STALL_SENSITIVITY 8
+#define X2_STALL_SENSITIVITY X_STALL_SENSITIVITY
+#define Y_STALL_SENSITIVITY 8
+#define Y2_STALL_SENSITIVITY Y_STALL_SENSITIVITY
+//#define Z_STALL_SENSITIVITY  8
+//#define Z2_STALL_SENSITIVITY Z_STALL_SENSITIVITY
+//#define Z3_STALL_SENSITIVITY Z_STALL_SENSITIVITY
+//#define Z4_STALL_SENSITIVITY Z_STALL_SENSITIVITY
+//#define SPI_ENDSTOPS              // TMC2130 only
+//#define IMPROVE_HOMING_RELIABILITY
+#endif
 
-  /**
+/**
    * TMC Homing stepper phase.
    *
    * Improve homing repeatability by homing to stepper coil's nearest absolute
@@ -2679,21 +2722,21 @@
    *
    * Values from 0..1023, -1 to disable homing phase for that axis.
    */
-   //#define TMC_HOME_PHASE { 896, 896, 896 }
+//#define TMC_HOME_PHASE { 896, 896, 896 }
 
-  /**
+/**
    * Beta feature!
    * Create a 50/50 square wave step pulse optimal for stepper drivers.
    */
-  //#define SQUARE_WAVE_STEPPING
+//#define SQUARE_WAVE_STEPPING
 
-  /**
+/**
    * Enable M122 debugging command for TMC stepper drivers.
    * M122 S0/1 will enable continous reporting.
    */
-  //#define TMC_DEBUG
+//#define TMC_DEBUG
 
-  /**
+/**
    * You can set your own advanced settings by filling in predefined functions.
    * A list of available functions can be found on the library github page
    * https://github.com/teemuatlut/TMCStepper
@@ -2704,7 +2747,9 @@
    *   stepperY.intpol(0); \
    * }
    */
-  #define TMC_ADV() {  }
+#define TMC_ADV() \
+  {               \
+  }
 
 #endif // HAS_TRINAMIC_CONFIG
 
@@ -3010,18 +3055,11 @@
 
   #define SPINDLE_LASER_FREQUENCY       2500   // (Hz) Spindle/laser frequency (only on supported HALs: AVR and LPC)
 
-  //#define SPINDLE_SERVO         // A servo converting an angle to spindle power
-  #ifdef SPINDLE_SERVO
-    #define SPINDLE_SERVO_NR   0  // Index of servo used for spindle control
-    #define SPINDLE_SERVO_MIN 10  // Minimum angle for servo spindle
-  #endif
-
   /**
    * Speed / Power can be set ('M3 S') and displayed in terms of:
    *  - PWM255  (S0 - S255)
    *  - PERCENT (S0 - S100)
    *  - RPM     (S0 - S50000)  Best for use with a spindle
-   *  - SERVO   (S0 - S180)
    */
   #define CUTTER_POWER_UNIT PWM255
 
@@ -3591,24 +3629,11 @@
 #endif
 
 /**
- * Průša Multi-Material Unit (MMU)
+ * Průša Multi-Material Unit v2
  * Enable in Configuration.h
- *
- * These devices allow a single stepper driver on the board to drive
- * multi-material feeders with any number of stepper motors.
  */
-#if HAS_PRUSA_MMU1
-  /**
-   * This option only allows the multiplexer to switch on tool-change.
-   * Additional options to configure custom E moves are pending.
-   *
-   * Override the default DIO selector pins here, if needed.
-   * Some pins files may provide defaults for these pins.
-   */
-  //#define E_MUX0_PIN 40  // Always Required
-  //#define E_MUX1_PIN 42  // Needed for 3 to 8 inputs
-  //#define E_MUX2_PIN 44  // Needed for 5 to 8 inputs
-#elif HAS_PRUSA_MMU2
+#if ENABLED(PRUSA_MMU2)
+
   // Serial port used for communication with MMU2.
   #define MMU2_SERIAL_PORT 2
 
@@ -3623,7 +3648,7 @@
 
   // Add an LCD menu for MMU2
   //#define MMU2_MENUS
-  #if EITHER(MMU2_MENUS, HAS_PRUSA_MMU2S)
+  #if ENABLED(MMU2_MENUS)
     // Settings for filament load / unload from the LCD menu.
     // This is for Průša MK3-style extruders. Customize for your hardware.
     #define MMU2_FILAMENTCHANGE_EJECT_FEED 80.0
@@ -3649,11 +3674,28 @@
   #endif
 
   /**
+   * MMU Extruder Sensor
+   *
+   * Support for a Průša (or other) IR Sensor to detect filament near the extruder
+   * and make loading more reliable. Suitable for an extruder equipped with a filament
+   * sensor less than 38mm from the gears.
+   *
+   * During loading the extruder will stop when the sensor is triggered, then do a last
+   * move up to the gears. If no filament is detected, the MMU2 can make some more attempts.
+   * If all attempts fail, a filament runout will be triggered.
+   */
+  //#define MMU_EXTRUDER_SENSOR
+  #if ENABLED(MMU_EXTRUDER_SENSOR)
+    #define MMU_LOADING_ATTEMPTS_NR 5 // max. number of attempts to load filament if first load fail
+  #endif
+
+  /**
    * Using a sensor like the MMU2S
    * This mode requires a MK3S extruder with a sensor at the extruder idler, like the MMU2S.
    * See https://help.prusa3d.com/en/guide/3b-mk3s-mk2-5s-extruder-upgrade_41560, step 11
    */
-  #if HAS_PRUSA_MMU2S
+  //#define PRUSA_MMU2_S_MODE
+  #if ENABLED(PRUSA_MMU2_S_MODE)
     #define MMU2_C0_RETRY   5             // Number of retries (total time = timeout*retries)
 
     #define MMU2_CAN_LOAD_FEEDRATE 800    // (mm/min)
@@ -3669,29 +3711,11 @@
     #define MMU2_CAN_LOAD_INCREMENT_SEQUENCE \
       { -MMU2_CAN_LOAD_INCREMENT, MMU2_CAN_LOAD_FEEDRATE }
 
-  #else
-
-    /**
-     * MMU1 Extruder Sensor
-     *
-     * Support for a Průša (or other) IR Sensor to detect filament near the extruder
-     * and make loading more reliable. Suitable for an extruder equipped with a filament
-     * sensor less than 38mm from the gears.
-     *
-     * During loading the extruder will stop when the sensor is triggered, then do a last
-     * move up to the gears. If no filament is detected, the MMU2 can make some more attempts.
-     * If all attempts fail, a filament runout will be triggered.
-     */
-    //#define MMU_EXTRUDER_SENSOR
-    #if ENABLED(MMU_EXTRUDER_SENSOR)
-      #define MMU_LOADING_ATTEMPTS_NR 5 // max. number of attempts to load filament if first load fail
-    #endif
-
   #endif
 
   //#define MMU2_DEBUG  // Write debug info to serial output
 
-#endif // HAS_PRUSA_MMU2
+#endif // PRUSA_MMU2
 
 /**
  * Advanced Print Counter settings
